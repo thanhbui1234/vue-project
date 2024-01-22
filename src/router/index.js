@@ -1,31 +1,52 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-// import UserHome from "./views/UserHome.vue";
-// import UserProfile from "./views/UserProfile.vue";
-// import UserPosts from "./views/UserPosts.vue";
-
+import Layouthead from "../layouts/LayoutHead.vue";
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
-  },
-  {
-    path: "/about",
-    name: "about",
-    component: () => import("../views/About.vue"),
+    component: Layouthead,
     children: [
       {
-        path: "details",
-        name: "details",
-        component: () => import("../views/Detail.vue"),
+        path: "/",
+        name: "Mainlayout",
+        component: () => import("../layouts/Mainlayout.vue"),
+        redirect: "/home",
+        children: [
+          {
+            path: "/home",
+            name: "home",
+            component: () => import("../views/Home.vue"),
+          },
+          {
+            path: "/home",
+            name: "home",
+            component: () => import("../views/Home.vue"),
+          },
+          {
+            path: "/short/:id",
+            name: "short",
+            component: () => import("../views/Short.vue"),
+          },
+        ],
+      },
+      {
+        path: "/detls/:id",
+        name: "detail",
+        component: () => import("../views/Des.vue"),
       },
     ],
   },
   {
-    path: "/des/:id",
-    component: () => import("../views/Des.vue"),
+    path: "/:pathMatch(.*)*",
+    name: "notfound",
+    component: () => import("../views/Notfound.vue"),
   },
+
+  // {
+  //   path: "/detls/:id",
+  //   name: "detail",
+  //   component: () => import("../views/Des.vue"),
+  // },
 ];
 const router = createRouter({
   history: createWebHistory(),
