@@ -4,7 +4,10 @@ import { ChangeNumber } from "../../helper/number";
 
 <template>
   <div v-for="item in data" v-bind:key="item.id">
-    <router-link class="flex" :to="{ name: 'detail', params: { id: item.id } }">
+    <router-link
+      class="flex side"
+      :to="{ name: 'detail', params: { id: item.id } }"
+    >
       <img
         class="w-[200px] h-[110px] rounded-md"
         :src="item.image"
@@ -49,7 +52,8 @@ export default {
     rgba(47, 46, 88, 0.9024859943977591) 61%
   );
 }
-.text:hover {
+.text:hover,
+side:hover > .text {
   background: rgb(56, 40, 140);
   background: linear-gradient(
     135deg,

@@ -27,11 +27,13 @@ import { ChangeNumber } from "../../helper/number";
 
     <div class="m-10 content">
       <div v-for="item in datas" :key="item.id">
-        <img class="rounded-lg" :src="item.image" alt="" />
-        <div class="text-content text-white">
-          <h2>{{ item.title }}</h2>
-          <p class="text-gray-400">{{ ChangeNumber(item.view) }} Views</p>
-        </div>
+        <router-link :to="{ name: 'detail', params: { id: item.id } }">
+          <img class="rounded-lg" :src="item.image" alt="" />
+          <div class="text-content text-white">
+            <h2>{{ item.title }}</h2>
+            <p class="text-gray-400">{{ ChangeNumber(item.view) }} Views</p>
+          </div>
+        </router-link>
       </div>
     </div>
   </div>

@@ -3,24 +3,30 @@ import { ChangeNumber } from "../../helper/number";
 </script>
 
 <template>
-  <router-link :to="{ name: 'detail', params: { id: data.id } }">
-    <div
-      class="flex flex-col cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:w-[400pxN]"
-      style="width: 376px"
-    >
+  <div
+    class="flex flex-col cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:w-[400pxN]"
+    style="width: 376px"
+  >
+    <router-link :to="{ name: 'detail', params: { id: data.id } }">
       <img class="rounded-lg" :src="data.image" style="width: 100%" />
-      <div class="content-card">
-        <img :src="data.avt" alt="" />
-        <div class="">
+    </router-link>
+
+    <div class="content-card">
+      <img :src="data.avt" alt="" />
+      <div class="">
+        <router-link :to="{ name: 'detail', params: { id: data.id } }">
           <h2 class="font-bold text-white">{{ data.title }}</h2>
-          <span class="">
+        </router-link>
+
+        <span class="">
+          <router-link :to="{ name: 'short', params: { id: data.id } }">
             <p class="text">{{ data.username }}</p>
-            <p class="text">{{ ChangeNumber(data.view) }} view</p>
-          </span>
-        </div>
+          </router-link>
+          <p class="text">{{ ChangeNumber(data.view) }} view</p>
+        </span>
       </div>
     </div>
-  </router-link>
+  </div>
 </template>
 
 <script>

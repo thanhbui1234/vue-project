@@ -1,5 +1,5 @@
 <script setup>
-import Loading from "../components/loading/loading.vue";
+import Loading from "../components/Loading/Loading.vue";
 import Error from "../views/Error.vue";
 import Card from "../components/Card/Car.vue";
 </script>
